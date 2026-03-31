@@ -1,0 +1,86 @@
+{
+  "name": "Full Adder",
+  "category": "Arithmetic",
+  "difficulty": "Intermediate",
+  "tags": ["adder", "arithmetic", "logic", "multi-bit"],
+  "description": "A Full Adder adds three single-bit binary numbers (A, B, and Carry-in) and produces two outputs: Sum and Carry-out. Built using two Half Adders and an OR gate. Essential for building multi-bit adders in ALUs.",
+  "inputs": [
+    { "id": "input_0", "label": "A", "x": 50, "y": 80, "label_x": 10, "label_y": 80 },
+    { "id": "input_1", "label": "B", "x": 50, "y": 180, "label_x": 10, "label_y": 180 },
+    { "id": "input_2", "label": "Cin", "x": 50, "y": 280, "label_x": 10, "label_y": 280 }
+  ],
+  "outputs": [
+    { "id": "output_0", "label": "Sum", "x": 650, "y": 150, "label_x": 670, "label_y": 150 },
+    { "id": "output_1", "label": "Cout", "x": 650, "y": 250, "label_x": 670, "label_y": 250 }
+  ],
+  "gates": [
+    { "type": "XOR", "id": "xor_0", "x": 250, "y": 130, "input_count": 2 },
+    { "type": "AND", "id": "and_0", "x": 250, "y": 230, "input_count": 2 },
+    { "type": "XOR", "id": "xor_1", "x": 400, "y": 150, "input_count": 2 },
+    { "type": "AND", "id": "and_1", "x": 400, "y": 250, "input_count": 2 },
+    { "type": "OR", "id": "or_0", "x": 550, "y": 250, "input_count": 2 }
+  ],
+  "wires": [
+    { "from": { "id": "input_0", "port": "out" }, "to": { "id": "xor_0", "port": "in_0" } },
+    { "from": { "id": "input_1", "port": "out" }, "to": { "id": "xor_0", "port": "in_1" } },
+    { "from": { "id": "input_0", "port": "out" }, "to": { "id": "and_0", "port": "in_0" } },
+    { "from": { "id": "input_1", "port": "out" }, "to": { "id": "and_0", "port": "in_1" } },
+    { "from": { "id": "xor_0", "port": "out" }, "to": { "id": "xor_1", "port": "in_0" } },
+    { "from": { "id": "input_2", "port": "out" }, "to": { "id": "xor_1", "port": "in_1" } },
+    { "from": { "id": "xor_0", "port": "out" }, "to": { "id": "and_1", "port": "in_0" } },
+    { "from": { "id": "input_2", "port": "out" }, "to": { "id": "and_1", "port": "in_1" } },
+    { "from": { "id": "and_0", "port": "out" }, "to": { "id": "or_0", "port": "in_0" } },
+    { "from": { "id": "and_1", "port": "out" }, "to": { "id": "or_0", "port": "in_1" } },
+    { "from": { "id": "xor_1", "port": "out" }, "to": { "id": "output_0", "port": "in" } },
+    { "from": { "id": "or_0", "port": "out" }, "to": { "id": "output_1", "port": "in" } }
+  ],
+  "tutorial": {
+    "id": "full_adder_tutorial",
+    "title": "Building a Full Adder from Half Adders",
+    "steps": [
+      {
+        "step": 1,
+        "instruction": "A Full Adder extends the Half Adder by adding a third input: Carry-in (Cin). This allows chaining adders for multi-bit arithmetic.",
+        "highlight": ["input_0", "input_1", "input_2"],
+        "expected_action": "Observe the three inputs: A, B, and Cin."
+      },
+      {
+        "step": 2,
+        "instruction": "The first Half Adder (XOR0 + AND0) processes inputs A and B, producing a partial sum and carry.",
+        "highlight": ["xor_0", "and_0"],
+        "expected_action": "Toggle A and B to see the first Half Adder behavior."
+      },
+      {
+        "step": 3,
+        "instruction": "The second Half Adder (XOR1 + AND1) adds the partial sum from the first stage with Cin.",
+        "highlight": ["xor_1", "and_1"],
+        "expected_action": "Toggle Cin to see how it affects the second stage."
+      },
+      {
+        "step": 4,
+        "instruction": "The OR gate combines carry outputs from both Half Adders to produce the final Carry-out.",
+        "highlight": ["or_0"],
+        "expected_action": "Find input combinations that produce Cout=1."
+      },
+      {
+        "step": 5,
+        "instruction": "Verify the truth table: A+B+Cin produces Sum (XOR of all three) and Cout (1 if 2+ inputs are 1).",
+        "highlight": ["output_0", "output_1"],
+        "expected_action": "Test all 8 input combinations (000 through 111)."
+      },
+      {
+        "step": 6,
+        "instruction": "Excellent! Full Adders can be chained to create ripple-carry adders for any bit width. This is how CPUs perform addition.",
+        "highlight": [],
+        "expected_action": "You now understand the building block of arithmetic logic units!"
+      }
+    ]
+  },
+  "metadata": {
+    "version": "1.0",
+    "created_by": "GSoC CircuitVerse Prep",
+    "created_date": "2025-04-01",
+    "circuits": 1,
+    "scope": "main"
+  }
+}
