@@ -1,0 +1,82 @@
+{
+  "name": "SR Flip Flop",
+  "category": "Memory",
+  "difficulty": "Intermediate",
+  "tags": ["flip-flop", "memory", "sequential", "storage", "latch"],
+  "description": "An SR (Set-Reset) Flip Flop is a basic memory element that stores one bit of data. Built using two cross-coupled NOR gates. Inputs: S (Set) sets output to 1, R (Reset) sets output to 0. The forbidden state S=1, R=1 should be avoided. Essential for understanding sequential logic and memory circuits.",
+  "inputs": [
+    { "id": "input_0", "label": "S (Set)", "x": 50, "y": 100, "label_x": 10, "label_y": 100 },
+    { "id": "input_1", "label": "R (Reset)", "x": 50, "y": 200, "label_x": 10, "label_y": 200 }
+  ],
+  "outputs": [
+    { "id": "output_0", "label": "Q", "x": 400, "y": 150, "label_x": 420, "label_y": 150 },
+    { "id": "output_1", "label": "Qbar", "x": 400, "y": 250, "label_x": 420, "label_y": 250 }
+  ],
+  "gates": [
+    { "type": "NOR", "id": "nor_0", "x": 200, "y": 150, "input_count": 2 },
+    { "type": "NOR", "id": "nor_1", "x": 200, "y": 250, "input_count": 2 }
+  ],
+  "wires": [
+    { "from": { "id": "input_0", "port": "out" }, "to": { "id": "nor_0", "port": "in_0" } },
+    { "from": { "id": "input_1", "port": "out" }, "to": { "id": "nor_1", "port": "in_0" } },
+    { "from": { "id": "nor_0", "port": "out" }, "to": { "id": "output_0", "port": "in" } },
+    { "from": { "id": "nor_1", "port": "out" }, "to": { "id": "output_1", "port": "in" } },
+    { "from": { "id": "nor_0", "port": "out" }, "to": { "id": "nor_1", "port": "in_1" } },
+    { "from": { "id": "nor_1", "port": "out" }, "to": { "id": "nor_0", "port": "in_1" } }
+  ],
+  "tutorial": {
+    "id": "sr_flipflop_tutorial",
+    "title": "Understanding the SR Flip Flop Memory Element",
+    "steps": [
+      {
+        "step": 1,
+        "instruction": "Welcome! The SR Flip Flop is the simplest sequential circuit that can store one bit of information. It uses feedback to maintain state.",
+        "highlight": ["nor_0", "nor_1"],
+        "expected_action": "Observe the two NOR gates with cross-coupled feedback connections."
+      },
+      {
+        "step": 2,
+        "instruction": "The feedback loop: Q output feeds back to the second NOR gate, and Qbar feeds back to the first NOR gate. This creates memory.",
+        "highlight": ["nor_0", "nor_1", "output_0", "output_1"],
+        "expected_action": "Notice the wires connecting each NOR output to the other's input."
+      },
+      {
+        "step": 3,
+        "instruction": "SET mode: Set S=1, R=0. The circuit should output Q=1, Qbar=0. This stores a logic 1.",
+        "highlight": ["input_0", "output_0", "output_1"],
+        "expected_action": "Set S=1 and R=0, verify Q=1 and Qbar=0."
+      },
+      {
+        "step": 4,
+        "instruction": "RESET mode: Set S=0, R=1. The circuit should output Q=0, Qbar=1. This stores a logic 0.",
+        "highlight": ["input_1", "output_0", "output_1"],
+        "expected_action": "Set S=0 and R=1, verify Q=0 and Qbar=1."
+      },
+      {
+        "step": 5,
+        "instruction": "HOLD mode: Set S=0, R=0. The circuit maintains its previous state. This is how it stores data!",
+        "highlight": ["output_0", "output_1"],
+        "expected_action": "Set S=0 and R=0. The output should stay at its previous value."
+      },
+      {
+        "step": 6,
+        "instruction": "FORBIDDEN state: S=1, R=1 causes Q=Qbar=0 which is unstable. Avoid this combination in real circuits.",
+        "highlight": ["input_0", "input_1", "output_0", "output_1"],
+        "expected_action": "Try S=1 and R=1 to see the invalid state (both outputs 0)."
+      },
+      {
+        "step": 7,
+        "instruction": "Congratulations! You've mastered the SR Flip Flop. This is the foundation of all digital memory: registers, RAM, and storage.",
+        "highlight": [],
+        "expected_action": "You now understand how computers store data at the bit level!"
+      }
+    ]
+  },
+  "metadata": {
+    "version": "1.0",
+    "created_by": "GSoC CircuitVerse Prep",
+    "created_date": "2025-04-01",
+    "circuits": 1,
+    "scope": "main"
+  }
+}
