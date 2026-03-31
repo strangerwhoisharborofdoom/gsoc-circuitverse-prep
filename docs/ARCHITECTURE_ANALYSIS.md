@@ -294,5 +294,84 @@ For the **Vue simulator**:
 
 - CircuitVerse Main Repository: https://github.com/CircuitVerse/CircuitVerse
 - Vue Frontend Repository: https://github.com/CircuitVerse/cv-frontend-vue
+
+- ## Template Library
+
+This repository includes a collection of pre-built circuit templates that serve as educational building blocks for learning digital logic design. Each template is stored as a JSON file containing the complete circuit data in CircuitVerse's native format.
+
+### Template Files
+
+| Template | Description | Difficulty |
+|----------|-------------|------------|
+| `templates/full_adder.json` | Full Adder circuit with 3 inputs (A, B, Cin) and 2 outputs (Sum, Cout) | Beginner |
+| `templates/half_adder.json` | Half Adder circuit with 2 inputs (A, B) and 2 outputs (Sum, Carry) | Beginner |
+| `templates/sr_flipflop.json` | SR Flip-Flop using cross-coupled NOR gates with Set/Reset inputs | Intermediate |
+| `templates/multiplexer.json` | 4-to-1 Multiplexer with 4 data inputs, 2 select lines, and 1 output | Intermediate |
+| `templates/binary_counter.json` | 4-bit synchronous binary counter using JK flip-flops | Intermediate |
+
+### Template Data Structure
+
+Each template JSON file contains the complete CircuitVerse circuit data structure:
+
+```
+{
+  "name": "<Circuit Name>",
+  "projectId": "<unique-id>",
+  "timePeriod": 500,
+  "clockEnabled": true,
+  "focussedCircuit": "<circuit-id>",
+  "scopes": [{
+    "id": "<circuit-id>",
+    "name": "main",
+    "layout": { ... },
+    "allNodes": [ ... ],
+    "Input": [ ... ],
+    "Output": [ ... ],
+    "AND": [ ... ],
+    "OR": [ ... ],
+    "NOT": [ ... ],
+    "NAND": [ ... ],
+    "NOR": [ ... ],
+    "XOR": [ ... ],
+    "XNOR": [ ... ],
+    "JK FlipFlop": [ ... ],
+    "SR FlipFlop": [ ... ],
+    ...
+  }]
+}
+```
+
+### Usage in Learning Workflow
+
+These templates serve as:
+
+1. **Starting Points**: Students can import templates as base circuits to modify and experiment with
+2. **Reference Designs**: Correct implementations of standard digital logic circuits
+3. **Tutorial Examples**: Each template includes step-by-step construction instructions in the circuit comments/metadata
+4. **Validation Targets**: Tutorial systems can compare student circuits against template outputs
+
+### Integration with CircuitVerse
+
+Templates can be integrated into CircuitVerse via:
+
+- **API**: `GET /api/v1/templates` - List available templates
+- **API**: `GET /api/v1/templates/:id/circuit_data` - Fetch specific template data
+- **Frontend**: Template browser panel in the simulator sidebar
+- **Import**: Use existing `load()` function in `data.js` to load template JSON directly
+
+### Future Template Additions
+
+Suggested templates for future iterations:
+
+- Ripple Carry Adder (4-bit)
+- Decoder (3-to-8)
+- Encoder (8-to-3)
+- Priority Encoder
+- Parity Generator/Checker
+- Shift Registers
+- Arithmetic Logic Unit (ALU)
+- Memory Unit (RAM)
+- Simple CPU (fetch-decode-execute)
+
 - CircuitVerse API Docs: https://api.circuitverse.org
 - CircuitVerse Documentation: https://docs.circuitverse.org
