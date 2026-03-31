@@ -1,0 +1,100 @@
+{
+  "name": "4-Bit Binary Counter",
+  "category": "Sequential",
+  "difficulty": "Advanced",
+  "tags": ["counter", "sequential", "binary", "clock", "timing"],
+  "description": "A 4-bit asynchronous binary counter built using JK flip flops. Counts from 0 to 15 (0000 to 1111) in binary. Each flip flop toggles on the falling edge of the previous stage, creating a ripple effect. The clock input drives the counter, and outputs Q0-Q3 represent the binary count value.",
+  "inputs": [
+    { "id": "input_0", "label": "Clock", "x": 50, "y": 180, "label_x": 10, "label_y": 180 },
+    { "id": "input_1", "label": "Reset", "x": 50, "y": 380, "label_x": 10, "label_y": 380 }
+  ],
+  "outputs": [
+    { "id": "output_0", "label": "Q0 (LSB)", "x": 700, "y": 100, "label_x": 720, "label_y": 100 },
+    { "id": "output_1", "label": "Q1", "x": 700, "y": 180, "label_x": 720, "label_y": 180 },
+    { "id": "output_2", "label": "Q2", "x": 700, "y": 260, "label_x": 720, "label_y": 260 },
+    { "id": "output_3", "label": "Q3 (MSB)", "x": 700, "y": 340, "label_x": 720, "label_y": 340 }
+  ],
+  "gates": [
+    { "type": "JK_FLIPFLOP", "id": "ff_0", "x": 250, "y": 100, "input_count": 2 },
+    { "type": "JK_FLIPFLOP", "id": "ff_1", "x": 400, "y": 180, "input_count": 2 },
+    { "type": "JK_FLIPFLOP", "id": "ff_2", "x": 400, "y": 260, "input_count": 2 },
+    { "type": "JK_FLIPFLOP", "id": "ff_3", "x": 400, "y": 340, "input_count": 2 },
+    { "type": "NOT", "id": "not_0", "x": 150, "y": 100, "input_count": 1 },
+    { "type": "NOT", "id": "not_1", "x": 350, "y": 180, "input_count": 1 },
+    { "type": "NOT", "id": "not_2", "x": 350, "y": 260, "input_count": 1 },
+    { "type": "NOT", "id": "not_3", "x": 350, "y": 340, "input_count": 1 }
+  ],
+  "wires": [
+    { "from": { "id": "input_0", "port": "out" }, "to": { "id": "not_0", "port": "in" } },
+    { "from": { "id": "not_0", "port": "out" }, "to": { "id": "ff_0", "port": "clk" } },
+    { "from": { "id": "ff_0", "port": "Q" }, "to": { "id": "not_1", "port": "in" } },
+    { "from": { "id": "not_1", "port": "out" }, "to": { "id": "ff_1", "port": "clk" } },
+    { "from": { "id": "ff_1", "port": "Q" }, "to": { "id": "not_2", "port": "in" } },
+    { "from": { "id": "not_2", "port": "out" }, "to": { "id": "ff_2", "port": "clk" } },
+    { "from": { "id": "ff_2", "port": "Q" }, "to": { "id": "not_3", "port": "in" } },
+    { "from": { "id": "not_3", "port": "out" }, "to": { "id": "ff_3", "port": "clk" } },
+    { "from": { "id": "input_1", "port": "out" }, "to": { "id": "ff_0", "port": "reset" } },
+    { "from": { "id": "input_1", "port": "out" }, "to": { "id": "ff_1", "port": "reset" } },
+    { "from": { "id": "input_1", "port": "out" }, "to": { "id": "ff_2", "port": "reset" } },
+    { "from": { "id": "input_1", "port": "out" }, "to": { "id": "ff_3", "port": "reset" } },
+    { "from": { "id": "ff_0", "port": "Q" }, "to": { "id": "output_0", "port": "in" } },
+    { "from": { "id": "ff_1", "port": "Q" }, "to": { "id": "output_1", "port": "in" } },
+    { "from": { "id": "ff_2", "port": "Q" }, "to": { "id": "output_2", "port": "in" } },
+    { "from": { "id": "ff_3", "port": "Q" }, "to": { "id": "output_3", "port": "in" } }
+  ],
+  "tutorial": {
+    "id": "binary_counter_tutorial",
+    "title": "Building a 4-Bit Binary Counter",
+    "steps": [
+      {
+        "step": 1,
+        "instruction": "Welcome! A binary counter counts in binary from 0 to 15. It uses four JK flip flops connected in a chain.",
+        "highlight": ["ff_0", "ff_1", "ff_2", "ff_3"],
+        "expected_action": "Observe the four JK flip flops connected in sequence."
+      },
+      {
+        "step": 2,
+        "instruction": "Each JK flip flop toggles its output on each clock pulse. The Q output of one flip flop clocks the next, creating a ripple counter.",
+        "highlight": ["ff_0", "ff_1", "ff_2", "ff_3", "not_0", "not_1", "not_2", "not_3"],
+        "expected_action": "Notice the NOT gates inverting the clock for each stage."
+      },
+      {
+        "step": 3,
+        "instruction": "FF0 (Q0) is the LSB and toggles on every clock pulse. It changes state at the highest frequency.",
+        "highlight": ["input_0", "ff_0", "output_0"],
+        "expected_action": "Pulse the clock and watch Q0 toggle every time."
+      },
+      {
+        "step": 4,
+        "instruction": "FF1 (Q1) toggles when Q0 goes from 1 to 0. FF2 toggles when Q1 goes from 1 to 0. FF3 toggles when Q2 goes from 1 to 0.",
+        "highlight": ["ff_1", "ff_2", "ff_3"],
+        "expected_action": "Pulse the clock several times and observe the ripple effect."
+      },
+      {
+        "step": 5,
+        "instruction": "Read the binary count from Q3Q2Q1Q0. The sequence is: 0000, 0001, 0010, 0011, 0100... up to 1111, then it wraps to 0000.",
+        "highlight": ["output_0", "output_1", "output_2", "output_3"],
+        "expected_action": "Count the pulses and verify the binary output matches the count."
+      },
+      {
+        "step": 6,
+        "instruction": "The Reset input clears all flip flops to 0 simultaneously. Use it to restart counting from zero.",
+        "highlight": ["input_1", "ff_0", "ff_1", "ff_2", "ff_3"],
+        "expected_action": "Set Reset=1 to clear the counter, then Reset=0 to resume."
+      },
+      {
+        "step": 7,
+        "instruction": "Well done! Binary counters are used everywhere: digital clocks, frequency dividers, program counters in CPUs, and timer circuits.",
+        "highlight": [],
+        "expected_action": "You now understand sequential counting circuits!"
+      }
+    ]
+  },
+  "metadata": {
+    "version": "1.0",
+    "created_by": "GSoC CircuitVerse Prep",
+    "created_date": "2025-04-01",
+    "circuits": 1,
+    "scope": "main"
+  }
+}
