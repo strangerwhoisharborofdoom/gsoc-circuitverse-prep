@@ -1,0 +1,70 @@
+{
+  "name": "Half Adder",
+  "category": "Arithmetic",
+  "difficulty": "Beginner",
+  "tags": ["adder", "arithmetic", "logic", "basic"],
+  "description": "A Half Adder is a digital circuit that performs addition of two single-bit binary numbers. It has two inputs (A and B) and two outputs: Sum (XOR of inputs) and Carry (AND of inputs). Truth table: 0+0=00, 0+1=01, 1+0=01, 1+1=10.",
+  "inputs": [
+    { "id": "input_0", "label": "A", "x": 50, "y": 100, "label_x": 10, "label_y": 100 },
+    { "id": "input_1", "label": "B", "x": 50, "y": 200, "label_x": 10, "label_y": 200 }
+  ],
+  "outputs": [
+    { "id": "output_0", "label": "Sum", "x": 550, "y": 150, "label_x": 570, "label_y": 150 },
+    { "id": "output_1", "label": "Carry", "x": 550, "y": 250, "label_x": 570, "label_y": 250 }
+  ],
+  "gates": [
+    { "type": "XOR", "id": "xor_0", "x": 250, "y": 150, "input_count": 2 },
+    { "type": "AND", "id": "and_0", "x": 250, "y": 250, "input_count": 2 }
+  ],
+  "wires": [
+    { "from": { "id": "input_0", "port": "out" }, "to": { "id": "xor_0", "port": "in_0" } },
+    { "from": { "id": "input_1", "port": "out" }, "to": { "id": "xor_0", "port": "in_1" } },
+    { "from": { "id": "input_0", "port": "out" }, "to": { "id": "and_0", "port": "in_0" } },
+    { "from": { "id": "input_1", "port": "out" }, "to": { "id": "and_0", "port": "in_1" } },
+    { "from": { "id": "xor_0", "port": "out" }, "to": { "id": "output_0", "port": "in" } },
+    { "from": { "id": "and_0", "port": "out" }, "to": { "id": "output_1", "port": "in" } }
+  ],
+  "tutorial": {
+    "id": "half_adder_tutorial",
+    "title": "Understanding the Half Adder",
+    "steps": [
+      {
+        "step": 1,
+        "instruction": "Welcome! A Half Adder adds two single-bit binary numbers. It produces two outputs: Sum and Carry.",
+        "highlight": ["input_0", "input_1"],
+        "expected_action": "Observe the two input terminals labeled A and B."
+      },
+      {
+        "step": 2,
+        "instruction": "The XOR gate produces the Sum output. XOR outputs 1 when inputs differ, 0 when they match.",
+        "highlight": ["xor_0"],
+        "expected_action": "Toggle inputs A and B to see the XOR behavior."
+      },
+      {
+        "step": 3,
+        "instruction": "The AND gate produces the Carry output. Carry is 1 only when both inputs are 1.",
+        "highlight": ["and_0"],
+        "expected_action": "Set both A=1 and B=1 to see Carry=1."
+      },
+      {
+        "step": 4,
+        "instruction": "Test all four combinations: (0,0)→Sum=0,Carry=0 | (0,1)→Sum=1,Carry=0 | (1,0)→Sum=1,Carry=0 | (1,1)→Sum=0,Carry=1",
+        "highlight": ["output_0", "output_1"],
+        "expected_action": "Verify the truth table by testing all input combinations."
+      },
+      {
+        "step": 5,
+        "instruction": "Congratulations! You've explored the Half Adder. Notice how the Carry bit represents overflow when adding 1+1=10 in binary.",
+        "highlight": [],
+        "expected_action": "Great job! The Half Adder is the foundation for more complex arithmetic circuits."
+      }
+    ]
+  },
+  "metadata": {
+    "version": "1.0",
+    "created_by": "GSoC CircuitVerse Prep",
+    "created_date": "2025-04-01",
+    "circuits": 1,
+    "scope": "main"
+  }
+}
