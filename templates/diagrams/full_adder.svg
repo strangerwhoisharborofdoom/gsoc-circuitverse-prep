@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 250" width="600" height="250">
+  <style>
+    .gate { fill: #2d3748; stroke: #4299e1; stroke-width: 2; }
+    .wire { stroke: #68d391; stroke-width: 2; fill: none; }
+    .label { fill: #e2e8f0; font-family: monospace; font-size: 14px; }
+    .title { fill: #f7fafc; font-family: monospace; font-size: 16px; font-weight: bold; }
+    .input-pin { fill: #4299e1; }
+    .output-pin { fill: #f6e05e; }
+  </style>
+  <text x="300" y="25" text-anchor="middle" class="title">Full Adder Circuit</text>
+  <path d="M 180 60 L 220 60 L 220 120 L 180 120 Z" class="gate"/>
+  <path d="M 180 60 Q 150 90 180 120" class="gate"/>
+  <text x="200" y="95" text-anchor="middle" class="label">XOR</text>
+  <path d="M 300 60 L 340 60 L 340 120 L 300 120 Z" class="gate"/>
+  <path d="M 300 60 Q 270 90 300 120" class="gate"/>
+  <text x="320" y="95" text-anchor="middle" class="label">XOR</text>
+  <path d="M 180 140 L 230 140 L 230 200 L 180 200 Z" class="gate"/>
+  <path d="M 230 140 Q 260 170 230 200" class="gate"/>
+  <text x="205" y="175" text-anchor="middle" class="label">AND</text>
+  <path d="M 300 140 L 350 140 L 350 200 L 300 200 Z" class="gate"/>
+  <path d="M 350 140 Q 380 170 350 200" class="gate"/>
+  <text x="325" y="175" text-anchor="middle" class="label">AND</text>
+  <path d="M 420 140 L 470 140 L 470 200 L 420 200 Z" class="gate"/>
+  <path d="M 470 140 Q 500 170 470 200" class="gate"/>
+  <text x="445" y="175" text-anchor="middle" class="label">OR</text>
+  <line x1="30" y1="80" x2="180" y2="80" class="wire"/>
+  <circle cx="30" cy="80" r="5" class="input-pin"/>
+  <text x="15" y="75" class="label">A</text>
+  <line x1="30" y1="110" x2="180" y2="110" class="wire"/>
+  <circle cx="30" cy="110" r="5" class="input-pin"/>
+  <text x="15" y="105" class="label">B</text>
+  <line x1="30" y1="170" x2="300" y2="170" class="wire"/>
+  <circle cx="30" cy="170" r="5" class="input-pin"/>
+  <text x="15" y="165" class="label">Cin</text>
+  <line x1="300" y1="170" x2="300" y2="100" class="wire"/>
+  <line x1="220" y1="90" x2="300" y2="90" class="wire"/>
+  <line x1="30" y1="80" x2="30" y2="160" class="wire"/>
+  <line x1="30" y1="160" x2="180" y2="160" class="wire"/>
+  <line x1="30" y1="110" x2="30" y2="180" class="wire"/>
+  <line x1="30" y1="180" x2="180" y2="180" class="wire"/>
+  <line x1="220" y1="90" x2="220" y2="160" class="wire"/>
+  <line x1="220" y1="160" x2="300" y2="160" class="wire"/>
+  <line x1="300" y1="170" x2="300" y2="180" class="wire"/>
+  <line x1="230" y1="170" x2="330" y2="170" class="wire"/>
+  <line x1="330" y1="170" x2="330" y2="150" class="wire"/>
+  <line x1="330" y1="150" x2="420" y2="150" class="wire"/>
+  <line x1="350" y1="170" x2="420" y2="170" class="wire"/>
+  <line x1="340" y1="90" x2="500" y2="90" class="wire"/>
+  <circle cx="500" cy="90" r="5" class="output-pin"/>
+  <text x="515" y="95" class="label">Sum</text>
+  <line x1="470" y1="170" x2="500" y2="170" class="wire"/>
+  <circle cx="500" cy="170" r="5" class="output-pin"/>
+  <text x="515" y="175" class="label">Cout</text>
+  <rect x="520" y="30" width="75" height="160" fill="#1a202c" stroke="#4299e1" stroke-width="1"/>
+  <text x="557" y="50" text-anchor="middle" class="label" style="font-size:11px">Truth Table</text>
+  <text x="532" y="70" class="label" style="font-size:9px">A B Cin|S Co</text>
+  <text x="532" y="85" class="label" style="font-size:9px">0 0 0 |0 0</text>
+  <text x="532" y="100" class="label" style="font-size:9px">0 0 1 |1 0</text>
+  <text x="532" y="115" class="label" style="font-size:9px">0 1 0 |1 0</text>
+  <text x="532" y="130" class="label" style="font-size:9px">0 1 1 |0 1</text>
+  <text x="532" y="145" class="label" style="font-size:9px">1 0 0 |1 0</text>
+  <text x="532" y="160" class="label" style="font-size:9px">1 0 1 |0 1</text>
+  <text x="532" y="175" class="label" style="font-size:9px">1 1 0 |0 1</text>
+  <text x="532" y="190" class="label" style="font-size:9px">1 1 1 |1 1</text>
+</svg>
