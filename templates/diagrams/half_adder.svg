@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200" width="500" height="200">
+  <style>
+    .gate { fill: #2d3748; stroke: #4299e1; stroke-width: 2; }
+    .wire { stroke: #68d391; stroke-width: 2; fill: none; }
+    .label { fill: #e2e8f0; font-family: monospace; font-size: 14px; }
+    .title { fill: #f7fafc; font-family: monospace; font-size: 16px; font-weight: bold; }
+    .input-pin { fill: #4299e1; }
+    .output-pin { fill: #f6e05e; }
+  </style>
+  
+  <!-- Title -->
+  <text x="250" y="25" text-anchor="middle" class="title">Half Adder Circuit</text>
+  
+  <!-- XOR Gate for Sum -->
+  <path d="M 200 70 L 240 70 L 240 130 L 200 130 Z" class="gate"/>
+  <path d="M 200 70 Q 170 100 200 130" class="gate"/>
+  <text x="220" y="105" text-anchor="middle" class="label">XOR</text>
+  
+  <!-- AND Gate for Carry -->
+  <path d="M 200 150 L 250 150 L 250 210 L 200 210 Z" class="gate"/>
+  <path d="M 250 150 Q 280 180 250 210" class="gate"/>
+  <text x="225" y="185" text-anchor="middle" class="label">AND</text>
+  
+  <!-- Input A wire to XOR -->
+  <line x1="50" y1="80" x2="200" y2="80" class="wire"/>
+  <circle cx="50" cy="80" r="5" class="input-pin"/>
+  <text x="35" y="75" class="label">A</text>
+  
+  <!-- Input B wire to XOR -->
+  <line x1="50" y1="120" x2="200" y2="120" class="wire"/>
+  <circle cx="50" cy="120" r="5" class="input-pin"/>
+  <text x="35" y="115" class="label">B</text>
+  
+  <!-- Input A wire to AND -->
+  <line x1="50" y1="80" x2="50" y2="180" class="wire"/>
+  <line x1="50" y1="180" x2="200" y2="180" class="wire"/>
+  
+  <!-- Input B wire to AND -->
+  <line x1="50" y1="120" x2="50" y2="200" class="wire"/>
+  <line x1="50" y1="200" x2="200" y2="200" class="wire"/>
+  
+  <!-- Sum output -->
+  <line x1="240" y1="100" x2="350" y2="100" class="wire"/>
+  <circle cx="350" cy="100" r="5" class="output-pin"/>
+  <text x="365" y="105" class="label">Sum</text>
+  
+  <!-- Carry output -->
+  <line x1="250" y1="180" x2="350" y2="180" class="wire"/>
+  <circle cx="350" cy="180" r="5" class="output-pin"/>
+  <text x="365" y="185" class="label">Carry</text>
+  
+  <!-- Truth table -->
+  <rect x="380" y="50" width="110" height="100" fill="#1a202c" stroke="#4299e1" stroke-width="1"/>
+  <text x="435" y="70" text-anchor="middle" class="label" style="font-size:12px">Truth Table</text>
+  <text x="395" y="90" class="label" style="font-size:10px">A B | S C</text>
+  <text x="395" y="105" class="label" style="font-size:10px">0 0 | 0 0</text>
+  <text x="395" y="120" class="label" style="font-size:10px">0 1 | 1 0</text>
+  <text x="395" y="135" class="label" style="font-size:10px">1 0 | 1 0</text>
+  <text x="395" y="150" class="label" style="font-size:10px">1 1 | 0 1</text>
+</svg>
