@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 300" width="500" height="300">
+  <style>
+    .gate { fill: #2d3748; stroke: #4299e1; stroke-width: 2; }
+    .wire { stroke: #68d391; stroke-width: 2; fill: none; }
+    .label { fill: #e2e8f0; font-family: monospace; font-size: 14px; }
+    .title { fill: #f7fafc; font-family: monospace; font-size: 16px; font-weight: bold; }
+    .input-pin { fill: #4299e1; }
+    .output-pin { fill: #f6e05e; }
+    .bubble { fill: #e2e8f0; stroke: #e2e8f0; stroke-width: 1; }
+  </style>
+  <text x="250" y="25" text-anchor="middle" class="title">SR Flip-Flop (NOR Latch)</text>
+  <path d="M 200 80 L 250 80 L 250 140 L 200 140 Z" class="gate"/>
+  <path d="M 250 80 Q 280 110 250 140" class="gate"/>
+  <text x="225" y="115" text-anchor="middle" class="label">NOR</text>
+  <path d="M 200 180 L 250 180 L 250 240 L 200 180 Z" class="gate"/>
+  <path d="M 250 180 Q 280 210 250 240" class="gate"/>
+  <text x="225" y="215" text-anchor="middle" class="label">NOR</text>
+  <line x1="50" y1="100" x2="200" y2="100" class="wire"/>
+  <circle cx="50" cy="100" r="5" class="input-pin"/>
+  <text x="30" y="95" class="label">S</text>
+  <line x1="50" y1="200" x2="200" y2="200" class="wire"/>
+  <circle cx="50" cy="200" r="5" class="input-pin"/>
+  <text x="30" y="195" class="label">R</text>
+  <line x1="250" y1="110" x2="300" y2="110" class="wire"/>
+  <circle cx="250" cy="110" r="4" class="bubble"/>
+  <line x1="300" y1="110" x2="350" y2="110" class="wire"/>
+  <circle cx="350" cy="110" r="5" class="output-pin"/>
+  <text x="365" y="115" class="label">Q</text>
+  <line x1="350" y1="110" x2="350" y2="200" class="wire"/>
+  <line x1="350" y1="200" x2="200" y2="200" class="wire"/>
+  <line x1="250" y1="210" x2="300" y2="210" class="wire"/>
+  <circle cx="250" cy="210" r="4" class="bubble"/>
+  <line x1="300" y1="210" x2="350" y2="210" class="wire"/>
+  <circle cx="350" cy="210" r="5" class="output-pin"/>
+  <text x="365" y="215" class="label">Q'</text>
+  <line x1="350" y1="210" x2="350" y2="100" class="wire"/>
+  <line x1="350" y1="100" x2="200" y2="100" class="wire"/>
+  <rect x="380" y="80" width="110" height="120" fill="#1a202c" stroke="#4299e1" stroke-width="1"/>
+  <text x="435" y="100" text-anchor="middle" class="label" style="font-size:11px">Truth Table</text>
+  <text x="395" y="120" class="label" style="font-size:9px">S R | Q Q'</text>
+  <text x="395" y="135" class="label" style="font-size:9px">0 0 | Q Q' (hold)</text>
+  <text x="395" y="150" class="label" style="font-size:9px">0 1 | 0 1</text>
+  <text x="395" y="165" class="label" style="font-size:9px">1 0 | 1 0</text>
+  <text x="395" y="180" class="label" style="font-size:9px">1 1 | 0 0 (inv)</text>
+  <text x="410" y="200" class="label" style="font-size:8px;font-style:italic">*Inv=Invalid</text>
+</svg>
